@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="./static/favicon.png">
+    <title>The N-Body Problem: Parallel Execution from Single-Person Egocentric Video</title>
+    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="static/css/visualisation.css">
+</head>
+
+<body>
+    <div class="container">
+
+        <!-- HEADER  -->
+        <header>
+            <h1>The N-Body Problem:<br>Parallel Execution from Single-Person Egocentric Video</h1>
+            <div class="authors">
+                <a href="https://zhifanzhu.github.io/">Zhifan Zhu</a><sup>1</sup>, 
+                <a href="https://hyf015.github.io/">Yifei Huang</a><sup>2</sup>, 
+                <a href="https://sites.google.com/ut-vision.org/ysato/">Yoichi Sato</a><sup>2</sup>, 
+                <a href="https://dimadamen.github.io/">Dima Damen</a><sup>1</sup>
+            </div>
+            <div class="affiliations">
+                <sup>1</sup>University of Bristol, <sup>2</sup>The University of Tokyo
+            </div>
+            <div class="links">
+                <a href="https://arxiv.org/">Arxiv (coming)</a> 
+            </div>
+
+            <hr>
+            <!-- <h3>tl;dr: Can two people speed-up the work?</h3> -->
+        
+            <h3 class="teaser-sentence">If I invite a friend to my house, can we speed-up my work?</h3>
+
+
+        </header>
+
+        <main>
+
+            <section>
+
+                <div style="text-align:center; margin-bottom:24px;">
+                    <img src="static/images/web-teaser-abbrev.png"
+                        alt="Teaser"
+                        style="width:80%; display:block; margin:0 auto;">
+                </div>
+
+            </section>
+
+            <!-- ABSTRACT -->
+            <section id="abstract">
+                <h2>Abstract</h2>
+                <p>
+                    Humans can intuitively parallelise complex activities, but can a model learn this from observing a single person?
+                    Given one egocentric video, we introduce the N-Body Problem: how N individuals, can hypothetically perform the
+                    same set of tasks observed in this video. 
+                    The goal is to maximise speed-up, but naive assignment of video segments to
+                    individuals often violates real-world constraints, leading to physically impossible scenarios like two people using the
+                    same object or occupying the same space. 
+                    To address this, we formalise the N-Body Problem and propose a suite of
+                    metrics to evaluate both performance (speed-up, task coverage) 
+                    and feasibility (spatial collisions, object conflicts and causal constraints). 
+                    We then introduce a structured prompting strategy that guides 
+                    a Vision-Language Model (VLM) to reason about the 3D environment, object usage, 
+                    and temporal dependencies to produce a viable parallel execution. 
+                    On 100 videos from EPIC-Kitchens and HD-EPIC, 
+                    our method for N = 2 boosts action coverage by 45% over a baseline
+                    prompt for Gemini 2.5 Pro, while simultaneously slashing collision rates, 
+                    object and causal conflicts by 55%, 45% and 55% respectively.
+                </p>
+            </section>
+
+            <section id="videos">
+                <h2>Interactive Demo</h2>
+                
+                <div class="video-container">
+
+                    <div class="video-wrapper">
+                        <h3>Single-Person Video</h3>
+                        <video id="single-video" controls muted autoplay loop playsinline width="100%">
+                            <source src="static/videos/single_reduced_h265.mp4" type="video/mp4">
+                            Single-person video.
+                        </video>
+                    </div>
+                    
+
+                    <!-- NEW: buttons wrapper to stack vertically -->
+                    <div class="buttons-column">
+                        <div class="button-with-popup">
+                            <button id="sync-to-parallel" class="arrow-button btn-to-parallel" aria-label="Sync Videos">
+                                <span class="arrow-icon">➡</span>
+                                <span class="btn-text">Locate in parallel</span>
+                            </button>
+                            <div id="sync-popup" class="locate-popup" role="status" aria-live="assertive">
+                                This has no parallel moment
+                            </div>
+                        </div>
+
+                        <button id="sync-from-p1" class="arrow-button btn-orange">
+                            <span class="arrow-icon">⬅</span>
+                            <span class="btn-text">Locate P1 in source</span>
+                        </button>
+
+                        <button id="sync-from-p2" class="arrow-button btn-blue">
+                            <span class="arrow-icon">⬅</span>
+                            <span class="btn-text">Locate P2 in source</span>
+                        </button>
+                    </div>
+
+                    <div class="video-wrapper">
+                        <h3>Parallel Execution (N=2)</h3>
+                        <video id="parallel-video" controls muted autoplay loop playsinline width="100%">
+                            <source src="static/videos/N2_reduced_h265.mp4" type="video/mp4">
+                            Parallel execution video.
+                        </video>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <section>
+                <h2>Video Demo</h2>
+
+                <div class="video-demo-wrapper">
+                    <iframe 
+                        width="100%" 
+                        height="100%"
+                        src="https://www.youtube.com/embed/06EbtEhHYPY" 
+                        title="The N-Body Problem, Video Demo" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                <!-- <div class="video-wrapper" style="max-width:800px; margin:0 auto;">
+                    <video id="presentation-video" controls muted autoplay loop playsinline width="100%">
+                        <source src="static/videos/presentation_reduced_h265.mp4" type="video/mp4">
+                        Video presentation.
+                    </video>
+                </div> -->
+            </section>
+
+
+
+            <section id="citation">
+                <h2>Citation</h2>
+                <pre><code>
+                @misc{zhu2025nbody,
+                title={The N-Body Problem: Parallel Execution from Single-Person Egocentric Video},
+                author={Zhu, Zhifan and Huang, Yifei and Sato, Yoichi and Damen, Dima},
+                booktitle={arxiv},
+                year={2025}
+                }
+                </code></pre>
+            </section>
+        </main>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="columns is-centered">
+            <div class="column is-8">
+                <div class="content">
+                <p>
+                    <b>Acknowledgements:</b> 
+                    Research at Bristol is supported by EPSRC UMPIRE EP/T004991/1, EPSRC PG Visual AI EP/T028572/1. 
+                    Research at the University of Tokyo is supported by 
+                        JST ASPIRE Grant Number JPMJAP2303, JSPS KAKENHI Grant Numbers JP24K02956 and 25K24384.
+                    Z Zhu is supported by UoB-CSC scholarship.
+                </p>
+                </div>
+            </div>
+            </div>
+        </div>
+    </footer>
+
+    <script type="module" src="static/js/index.js"></script>
+
+</body>
+</html>

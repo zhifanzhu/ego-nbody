@@ -1,0 +1,110 @@
+/* --- Global Typography & Layout --- */
+body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* --- Header Section (Title, Authors) --- */
+header {
+    text-align: center;
+    margin-bottom: 2em;
+}
+
+h1 {
+    font-size: 2.5em;
+    margin-bottom: 0.2em;
+}
+
+.authors, .affiliations {
+    font-size: 1.1em;
+    margin-bottom: 0.5em;
+}
+
+.links a {
+    text-decoration: none;
+    color: #007bff;
+    margin: 0 10px;
+    font-size: 1.5em;
+}
+
+.links a:hover {
+    text-decoration: underline;
+}
+
+.full-width-hr {
+    border: none;
+    height: 2px;
+    background: #ccc;
+    margin: 20px 0;
+
+    /* full-bleed magic */
+    width: 100vw;
+    margin-left: 50%;
+    transform: translateX(-50%);
+}
+
+.teaser-sentence {
+    text-align: center;
+    font-size: 1.4em;
+    /* color: #555; */
+    /* border-bottom: 1px solid #ccc; */
+    /* border-top: 1px solid #ccc; */
+    margin-top: 1em; 
+    margin-bottom: 0.5em;
+    /* margin-top: 0.5em; */
+}
+
+/* --- Section Headings --- */
+h2 {
+    font-size: 1.8em;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 0.5em;
+    margin-top: 1.5em;
+}
+
+/* --- Abstract --- */
+#abstract {
+    margin-bottom: 2em;
+    text-align: justify;
+    line-height: 1.8;
+    font-size: 18px;
+}
+
+/* --- Video Demo --- */
+.video-demo-wrapper {
+    position: relative;
+    width: 100%;
+    /* max-width: 900px;      optional, to match your content width */
+    /* margin: 0 auto;        centre horizontally */
+    padding-bottom: 56.25%; /* 16:9 aspect ratio (9 / 16 = 0.5625) */
+    height: 0;
+}
+
+.video-demo-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* --- Citation Block --- */
+#citation pre {
+    background-color: #f4f4f4;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 1em;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-family: 'Courier New', Courier, monospace;
+}

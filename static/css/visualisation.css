@@ -1,0 +1,160 @@
+/* --- Main Visualization Container --- */
+#videos {
+    text-align: center;
+}
+
+/* Flexbox layout: Video | Buttons | Video */
+.video-container {
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    gap: 20px;
+    width: 100%;
+}
+
+/* Wrapper for individual videos */
+.video-wrapper {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.video-container .video-wrapper:first-child {
+  flex: 0.85;        /* left video */
+}
+
+.video-container .video-wrapper:last-child {
+  flex: 1.2;        /* right video gets more width */
+}
+
+/* Ensure headers don't cause misalignment issues */
+.video-wrapper h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    min-height: 2em;
+}
+
+video {
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    display: block;
+    /* aspect-ratio: 16 / 9; */
+}
+
+/* --- Middle Control Column --- */
+.buttons-column {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    /* Below for pop-up box */
+    position: relative;
+    align-items: stretch;
+}
+.button-with-popup {
+    position: relative;
+}
+.locate-popup {
+    position: absolute;
+    bottom: calc(100% + 12px);
+    left: 50%;
+    transform: translate(-50%, 8px);
+    background: rgba(34, 34, 34, 0.95);
+    color: #fff;
+    padding: 10px 14px;
+    border-radius: 8px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+    font-size: 0.9rem;
+    line-height: 1.4;
+    max-width: 240px;
+    min-width: 200px;
+    text-align: center;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+    z-index: 1000;
+}
+.locate-popup.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, -4px);
+}
+
+
+/* --- Button Styling --- */
+.arrow-button {
+    display: inline-flex;
+    flex-direction: column; /* 1. Stacks items vertically */
+    align-items: center;    /* 2. Centers them horizontally */
+    justify-content: center;
+    
+    width: 150px;           /* adjust button width */
+    height: 100px;          /* 3. Increased height to fit stacked content */
+    padding: 4px;
+    
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+    transition: transform 0.2s, filter 0.2s;
+}
+
+.arrow-button:hover {
+    filter: brightness(110%);
+    transform: scale(1.05);
+}
+
+.arrow-button:active {
+    transform: scale(0.95);
+}
+
+.arrow-icon {
+    display: block;
+    font-size: 40px;      /* 4. Made arrow bigger (was 28px) */
+    line-height: 1;
+    margin-bottom: 8px;   /* 5. Space between arrow and text */
+}
+
+.btn-text {
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 1.2;
+    max-width: 100%;       /* Ensures text doesn't overflow width */
+}
+
+/* --- Colors --- */
+.btn-to-parallel {
+  background-color: #6c757d; /* gray */
+  color: #ffffff;            /* readable text */
+  border: 1px solid #5c636a; /* subtle border */
+}
+.btn-to-parallel:hover,
+.btn-to-parallel:focus {
+  background-color: #5c636a;
+  border-color: #4b5157;
+}
+
+.btn-orange  { background-color: #fd7e14; }
+.btn-blue    { background-color: #0d6efd; }
+/* .btn-orange  { 
+    background-color: #ff9955; 
+}
+.btn-blue    { background-color: #5599ff; } */
+
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+    .video-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .video-wrapper h3 {
+        min-height: auto;
+    }
+}
