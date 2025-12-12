@@ -14,7 +14,8 @@
 
         <!-- HEADER  -->
         <header>
-            <h1>The N-Body Problem:<br>Parallel Execution from Single-Person Egocentric Video</h1>
+            <h1 style="color: blue; margin-bottom: 0;">The N-Body Problem:</h1>
+            <h2 style="margin-top: 0;">Parallel Execution from Single-Person Egocentric Video</h2>
             <div class="authors">
                 <a href="https://zhifanzhu.github.io/">Zhifan Zhu</a><sup>1</sup>, 
                 <a href="https://hyf015.github.io/">Yifei Huang</a><sup>2</sup>, 
@@ -31,7 +32,7 @@
             <hr>
             <!-- <h3>tl;dr: Can two people speed-up the work?</h3> -->
         
-            <h3 class="teaser-sentence">If I invite a friend to my house, can we speed-up my work?</h3>
+            <h3 class="teaser-sentence">Starting from a single-person egocentric video,<br/> we imagine how the task can be performed <span style="color:blue"><b>faster</b></span> by <span style="color:blue"><b>N</b></span> people.<br/> A valid execution has to respect physical and causal constraints</h3>
 
 
         </header>
@@ -41,7 +42,7 @@
             <section>
 
                 <div style="text-align:center; margin-bottom:24px;">
-                    <img src="static/images/web-teaser-abbrev.png"
+                    <img src="static/images/web-teaser2.png"
                         alt="Teaser"
                         style="width:80%; display:block; margin:0 auto;">
                 </div>
@@ -50,29 +51,24 @@
 
             <!-- ABSTRACT -->
             <section id="abstract">
-                <h2>Abstract</h2>
                 <p>
-                    Humans can intuitively parallelise complex activities, but can a model learn this from observing a single person?
+                    Humans can intuitively parallelise complex activities, but can a model learn this from observing a single person?<br/>
                     Given one egocentric video, we introduce the N-Body Problem: how N individuals, can hypothetically perform the
                     same set of tasks observed in this video. 
                     The goal is to maximise speed-up, but naive assignment of video segments to
                     individuals often violates real-world constraints, leading to physically impossible scenarios like two people using the
-                    same object or occupying the same space. 
-                    To address this, we formalise the N-Body Problem and propose a suite of
+                    same object or occupying the same space.</p>
+                <p>We formalise the N-Body Problem and propose a suite of
                     metrics to evaluate both performance (speed-up, task coverage) 
-                    and feasibility (spatial collisions, object conflicts and causal constraints). 
-                    We then introduce a structured prompting strategy that guides 
-                    a Vision-Language Model (VLM) to reason about the 3D environment, object usage, 
+                    and feasibility (spatial collisions, object conflicts and causal constraints). </p>
+                <p>
+                    We use structured prompting on Gemini Pro to reason about the 3D environment, object usage, 
                     and temporal dependencies to produce a viable parallel execution. 
-                    On 100 videos from EPIC-Kitchens and HD-EPIC, 
-                    our method for N = 2 boosts action coverage by 45% over a baseline
-                    prompt for Gemini 2.5 Pro, while simultaneously slashing collision rates, 
-                    object and causal conflicts by 55%, 45% and 55% respectively.
                 </p>
             </section>
 
             <section id="videos">
-                <h2>Interactive Demo</h2>
+                <h2>Interactive Demo (Move Between 1-Body [left] and 2-Body [right] Execution)</h2>
                 
                 <div class="video-container">
 
@@ -148,7 +144,7 @@
             <section id="citation">
                 <h2>Citation</h2>
                 <pre><code>
-                @misc{zhu2025nbody,
+                @article{zhu2025nbody,
                 title={The N-Body Problem: Parallel Execution from Single-Person Egocentric Video},
                 author={Zhu, Zhifan and Huang, Yifei and Sato, Yoichi and Damen, Dima},
                 booktitle={arxiv},
